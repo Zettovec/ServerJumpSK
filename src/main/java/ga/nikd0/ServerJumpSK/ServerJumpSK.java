@@ -1,0 +1,76 @@
+package ga.nikd0.ServerJumpSK;
+
+import ch.njol.skript.Skript;
+import ch.njol.skript.SkriptAddon;
+import com.google.common.io.ByteArrayDataInput;
+import com.google.common.io.ByteStreams;
+import org.bukkit.Bukkit;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.java.JavaPlugin;
+import org.bukkit.plugin.messaging.PluginMessageListener;
+
+import java.io.IOException;
+
+public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
+
+    private static ServerJumpSK instance;
+    private static SkriptAddon addon;
+
+    public ServerJumpSK() {
+        if (instance == null) {
+            instance = this;
+        } else {
+            throw new IllegalStateException();
+        }
+    }
+
+    @Override
+    public void onEnable(){
+        tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.1 by Nikd0. Let's start jumping!");
+        instance = this;
+        addon = Skript.registerAddon(this);
+        this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
+        this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
+        try {
+            addon.loadClasses("ga.nikd0.ServerJumpSK", "elements");
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    @Override
+    public void onDisable(){
+        tellConsole("§9[§bServerJumpSK§9] §bPlugin disabled.");
+        this.getServer().getMessenger().unregisterOutgoingPluginChannel(this);
+        this.getServer().getMessenger().unregisterIncomingPluginChannel(this);
+    }
+
+    public static ServerJumpSK getInstance() {
+        if (instance == null) {
+            throw new IllegalStateException();
+        }
+        return instance;
+    }
+
+    public static SkriptAddon getAddonInstance() {
+        return addon;
+    }
+
+    @Override
+    public void onPluginMessageReceived(String channel, Player player, byte[] message) {
+        if (!channel.equals("BungeeCord")) {
+            return;
+        }
+        ByteArrayDataInput in = ByteStreams.newDataInput(message);
+        String subchannel = in.readUTF();
+        if (subchannel.equals("RandomSubChannel")) {
+            // Currently not used
+        }
+    }
+
+    public void tellConsole(String message){
+        Bukkit.getConsoleSender().sendMessage(message);
+    }
+
+}
+

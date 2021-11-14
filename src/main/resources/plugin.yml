@@ -1,0 +1,8 @@
+name: ServerJumpSK
+version: 0.1
+author: Nikd0
+main: ga.nikd0.ServerJumpSK.ServerJumpSK
+api-version: 1.13
+depend: [Skript]
+website: "https://github.com/Zettovec/ServerJumpSK"
+description: "Send players across your BungeeCord network!"
