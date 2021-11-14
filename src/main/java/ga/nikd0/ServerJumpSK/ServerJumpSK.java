@@ -31,7 +31,7 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
         tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.2 by Nikd0. Let's start jumping!");
         instance = this;
         addon = Skript.registerAddon(this);
-        config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.");
+        config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.\nDO NOT CHANGE THE CONFIG VERSION.");
         config.addDefault("configVersion", "1.1");
         config.addDefault("consoleMsg", "[!] Sending player {player} to server {server}.");
         config.addDefault("alertConsoleOnJump", true);
