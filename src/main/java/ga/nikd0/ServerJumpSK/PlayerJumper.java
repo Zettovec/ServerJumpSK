@@ -19,7 +19,7 @@ public class PlayerJumper {
         dataOutput.writeUTF("Connect");
         dataOutput.writeUTF(server);
         target.sendPluginMessage(main, "BungeeCord", dataOutput.toByteArray());
-        Bukkit.getConsoleSender().sendMessage("[!] Sending player " + target.toString() + " between servers.");
+        Bukkit.getConsoleSender().sendMessage("[!] Sending player " + target.getDisplayName() + " between servers.");
     }
 
 }
