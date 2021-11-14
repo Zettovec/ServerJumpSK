@@ -23,7 +23,7 @@ public class PlayerJumper {
     }
 
     private void alertAboutJump(Player player, String server){
-        if (main.getConfig().getString("configVersion") != "1.1"){
+        if (!main.getConfig().getString("configVersion").equals("1.1")){
             Bukkit.getConsoleSender().sendMessage("§9[§bServerJumpSK§9] §cYour config file is outdated. Please, remove it and reload the plugin.");
         }
         if (main.getConfig().getBoolean("alertConsoleOnJump") && main.getConfig().getString("consoleMsg") != null) {
