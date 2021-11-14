@@ -28,7 +28,7 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onEnable(){
-        tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.1 by Nikd0. Let's start jumping!");
+        tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.2 by Nikd0. Let's start jumping!");
         instance = this;
         addon = Skript.registerAddon(this);
         config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.");
