@@ -19,12 +19,20 @@ public class PlayerJumper {
         dataOutput.writeUTF("Connect");
         dataOutput.writeUTF(server);
         target.sendPluginMessage(main, "BungeeCord", dataOutput.toByteArray());
-        alertConsole(target.getDisplayName());
+        alertAboutJump(target, server);
     }
 
-    private void alertConsole(String player){
+    private void alertAboutJump(Player player, String server){
+        if (main.getConfig().getString("configVersion") != "1.1"){
+            Bukkit.getConsoleSender().sendMessage("§9[§bServerJumpSK§9] §cYour config file is outdated. Please, remove it and reload the plugin.");
+        }
         if (main.getConfig().getBoolean("alertConsoleOnJump") && main.getConfig().getString("consoleMsg") != null) {
-            Bukkit.getConsoleSender().sendMessage(main.getConfig().getString("consoleMsg").replace("{player}", player));
+            String CONSOLE_ALERT = main.getConfig().getString("consoleMsg").replace("{player}", player.getDisplayName()).replace("{server}", server);
+            Bukkit.getConsoleSender().sendMessage(CONSOLE_ALERT);
+        }
+        if (main.getConfig().getBoolean("alertPlayerOnJump") && main.getConfig().getString("playerMsg") != null) {
+            String PLAYER_ALERT = main.getConfig().getString("playerMsg").replace("{player}", player.getDisplayName()).replace("{server}", server);
+            player.sendMessage(PLAYER_ALERT);
         }
     }
 

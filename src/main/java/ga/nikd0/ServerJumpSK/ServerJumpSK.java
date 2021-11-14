@@ -31,10 +31,12 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
         tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.1 by Nikd0. Let's start jumping!");
         instance = this;
         addon = Skript.registerAddon(this);
-        config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} to specify a player in a message.");
-        config.addDefault("configVersion", "1.0");
-        config.addDefault("consoleMsg", "[!] Sending player {player} between servers.");
+        config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.");
+        config.addDefault("configVersion", "1.1");
+        config.addDefault("consoleMsg", "[!] Sending player {player} to server {server}.");
         config.addDefault("alertConsoleOnJump", true);
+        config.addDefault("playerMsg", "[!] Sending you to server {server}...");
+        config.addDefault("alertPlayerOnJump", true);
         config.options().copyDefaults(true);
         saveConfig();
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
