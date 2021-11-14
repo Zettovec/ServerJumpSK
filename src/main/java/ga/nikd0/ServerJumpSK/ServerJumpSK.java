@@ -5,6 +5,7 @@ import ch.njol.skript.SkriptAddon;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
 import org.bukkit.Bukkit;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.plugin.messaging.PluginMessageListener;
@@ -15,6 +16,7 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
 
     private static ServerJumpSK instance;
     private static SkriptAddon addon;
+    FileConfiguration config = getConfig();
 
     public ServerJumpSK() {
         if (instance == null) {
@@ -29,6 +31,14 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
         tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.1 by Nikd0. Let's start jumping!");
         instance = this;
         addon = Skript.registerAddon(this);
+        config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.");
+        config.addDefault("configVersion", "1.1");
+        config.addDefault("consoleMsg", "[!] Sending player {player} to server {server}.");
+        config.addDefault("alertConsoleOnJump", true);
+        config.addDefault("playerMsg", "[!] Sending you to server {server}...");
+        config.addDefault("alertPlayerOnJump", true);
+        config.options().copyDefaults(true);
+        saveConfig();
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         try {
