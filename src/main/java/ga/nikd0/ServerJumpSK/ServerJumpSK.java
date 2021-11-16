@@ -4,6 +4,7 @@ import ch.njol.skript.Skript;
 import ch.njol.skript.SkriptAddon;
 import com.google.common.io.ByteArrayDataInput;
 import com.google.common.io.ByteStreams;
+import ga.nikd0.ServerJumpSK.commands.CommandServerJump;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
@@ -39,6 +40,7 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
         config.addDefault("alertPlayerOnJump", true);
         config.options().copyDefaults(true);
         saveConfig();
+        this.getCommand("serverjumpsk").setExecutor(new CommandServerJump());
         this.getServer().getMessenger().registerOutgoingPluginChannel(this, "BungeeCord");
         this.getServer().getMessenger().registerIncomingPluginChannel(this, "BungeeCord", this);
         try {

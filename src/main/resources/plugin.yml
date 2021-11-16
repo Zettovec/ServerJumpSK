@@ -6,3 +6,8 @@ api-version: 1.13
 depend: [Skript]
 website: "https://github.com/Zettovec/ServerJumpSK"
 description: "Send players across your BungeeCord network!"
+commands:
+  serverjumpsk:
+    description: Basic command for admins
+    usage: /<command>
+    aliases: [sjsk]
