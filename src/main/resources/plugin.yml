@@ -8,6 +8,6 @@ website: "https://github.com/Zettovec/ServerJumpSK"
 description: "Send players across your BungeeCord network!"
 commands:
   serverjumpsk:
-    description: Basic command for admins
+    description: Basic command for admins. Permission 'serverjumpsk.admin' necessary.
     usage: /<command>
     aliases: [sjsk]
