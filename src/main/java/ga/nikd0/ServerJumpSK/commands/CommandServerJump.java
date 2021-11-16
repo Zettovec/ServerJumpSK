@@ -98,13 +98,13 @@ public class CommandServerJump implements CommandExecutor {
         Bukkit.getConsoleSender().sendMessage("§1===== §9[§bServerJumpSK§9] §1=====");
         Bukkit.getConsoleSender().sendMessage("§f/sjsk configreload §b- Reload plugin config");
         Bukkit.getConsoleSender().sendMessage("§f/sjsk jump <player> <server> §b- Jump player to another server (console only)");
-        Bukkit.getConsoleSender().sendMessage("§1==================================");
+        Bukkit.getConsoleSender().sendMessage("§1===========================");
     }
 
     private void showCommandHelp(Player player){
         player.sendMessage("§1===== §9[§bServerJumpSK§9] §1=====");
         player.sendMessage("§f/sjsk configreload §b- Reload plugin config");
         player.sendMessage("§f/sjsk jump <player> <server> §b- Jump player to another server (console only)");
-        player.sendMessage("§1==================================");
+        player.sendMessage("§1===========================");
     }
 }
