@@ -1,4 +1,7 @@
 # ServerJumpSK - The Skript Addon
+![](https://img.shields.io/github/v/release/Zettovec/ServerJumpSK?display_name=tag&include_prereleases)
+![](https://img.shields.io/github/downloads/Zettovec/ServerJumpSK/total)
+
 ServerJumpSK is a successor of my previously developed and no longer maintenained Spigot plugin ServerJump. It allows you to send players across your BungeeCord network easily, via Skript on your **Spigot server**.
 
 ### What do you need?
