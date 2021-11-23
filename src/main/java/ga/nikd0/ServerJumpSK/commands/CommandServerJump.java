@@ -21,6 +21,10 @@ public class CommandServerJump implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (sender instanceof ConsoleCommandSender) {
+            if (main.getConfig().getBoolean("disableSJSKCommand")){
+                return false;
+            }
+
             if (args.length == 0) {
                 Bukkit.getConsoleSender().sendMessage("§9[§bServerJumpSK§9] §bUse §f/sjsk help§b to get a list of possible commands.");
             } else if (args[0].equalsIgnoreCase("configreload") && args.length == 1) {

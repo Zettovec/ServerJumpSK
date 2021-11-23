@@ -29,11 +29,12 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
 
     @Override
     public void onEnable(){
-        tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.2 by Nikd0. Let's start jumping!");
+        tellConsole("§9[§bServerJumpSK§9] §bLoading ServerJumpSK v0.2.1 by Nikd0. Let's start jumping!");
         instance = this;
         addon = Skript.registerAddon(this);
         config.options().header("ServerJumpSK Skript Addon Config\n\nUse {player} and {server} in your messages.\nDO NOT CHANGE THE CONFIG VERSION.");
-        config.addDefault("configVersion", "1.1");
+        config.addDefault("configVersion", "0.2.1");
+        config.addDefault("disableSJSKCommand", false);
         config.addDefault("consoleMsg", "[!] Sending player {player} to server {server}.");
         config.addDefault("alertConsoleOnJump", true);
         config.addDefault("playerMsg", "[!] Sending you to server {server}...");
@@ -47,6 +48,10 @@ public class ServerJumpSK extends JavaPlugin implements PluginMessageListener {
             addon.loadClasses("ga.nikd0.ServerJumpSK", "elements");
         } catch (IOException e) {
             e.printStackTrace();
+        }
+
+        if (!config.getString("configVersion").equals("0.2.1")){
+            Bukkit.getConsoleSender().sendMessage("§9[§bServerJumpSK§9] §cYour config file is outdated. Please, remove it and reload the plugin.");
         }
     }
 
