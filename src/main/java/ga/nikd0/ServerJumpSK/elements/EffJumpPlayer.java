@@ -2,10 +2,7 @@ package ga.nikd0.ServerJumpSK.elements;
 
 import javax.annotation.Nullable;
 
-import com.google.common.io.ByteArrayDataOutput;
-import com.google.common.io.ByteStreams;
 import ga.nikd0.ServerJumpSK.PlayerJumper;
-import ga.nikd0.ServerJumpSK.ServerJumpSK;
 import org.bukkit.Bukkit;
 import org.bukkit.entity.Player;
 import org.bukkit.event.Event;
